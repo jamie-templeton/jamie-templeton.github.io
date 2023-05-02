@@ -21,14 +21,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style type="text/css">
-body {font-family: 'Open Sans', sans-serif;}
+body {
+font-family: 'Open Sans', sans-serif;
+background-color:red}
 .active {text-decoration: line-through;}
 .overlay {
     position: relative;
     z-index: 200;
     color: #FFFFFF;
-    background-color: #000000;
-    opacity: 85%;
+    background-color:rgba(0,0,0,0.8);
     width: 100%;
     border-radius: 15px;
     border: 2px solid #FFFFFF;
@@ -57,7 +58,7 @@ body {font-family: 'Open Sans', sans-serif;}
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  opacity: 60%;
+  opacity: 0.8;
 }
 .notes {
     position: absolute;
@@ -142,7 +143,7 @@ body {font-family: 'Open Sans', sans-serif;}
 </script>
 
     </head>
-    <body onload="un()" class="bg-danger">
+    <body onload="un()">
 
 
         <!-- Navigation-->
