@@ -4,546 +4,238 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="author" content="Jamie Templeton" />
         <title>Jamie Templeton - Portfolio</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-
-        <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style type="text/css">
-body {
-font-family: 'Open Sans', sans-serif;
+<style>
+.container {
+  position: relative;
+  width: 100%;
 }
-.active {text-decoration: line-through;}
+
+.header {
+    max-width:800px;
+    height:5em;
+    margin: 0 auto -5px auto;
+    color: #FFFFFF;
+    background-color: #333;
+    padding: 5px 0 5px 0;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-width:800px;
+  height: auto;
+  margin: 0 auto;
+}
+
 .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  max-width:800px;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000;
+  margin: 0 auto;
+}
 
-    color: #000000;
-    width: 100%;
-    padding:1.5em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:;
+.container:hover .overlay {
+  opacity: .8;
+}
 
-    }
-.bff {display:none;}
-.un {display:none;}
-.sientra {display:none;}
-.banners {display:none;}
-.social {display:none;}
-.photography {display:none;}
-.dashboard {display:none;}
-.skills {display:none;}
+.text {
+  color: white;
+  font-size: 1.2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
 
+.vidContainer {
+    max-width:800px;
+    margin: 0 auto -5px auto;
+}
 .vid {
     width: 100%;
 }
-.notes {
-    position: absolute;
-    bottom: 0px;
+
+ul {font-size:1.2em;}
+
+.svg-inline--fa {
+    font-size:2.0em;
+    padding-right:0.2em;
 }
+
+.subHead {
+    max-width:800px;
+    margin: 0 auto -5px auto;
+    font-size: 3em;
+    color: #FFFFFF;
+    background-color: #333;
+    padding: 5px 0 5px 0;
+}
+
+.footer {
+    max-width:800px;
+    height:20em;
+    margin: 0 auto -5px auto;
+    font-size: ;
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    padding: 5px 0 5px 0;
+}
+
+@media (max-width: 600px) {
+.text {display:;
+font-size: 0.9em;}
+}    
 
 </style>
 
-<script type="text/javascript">
-        function bff() {
-                var x = document.getElementsByClassName("resume-section");
-                    var i;
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = 'none';
-                    }
-            document.getElementById("bff").style.display = "block";        
-    }
-
-    function un() {
-                var x = document.getElementsByClassName("resume-section");
-                    var i;
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = 'none';
-                    }
-            document.getElementById("un").style.display = "block";        
-    }
-
-        function sientra() {
-                var x = document.getElementsByClassName("resume-section");
-                    var i;
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = 'none';
-                    }
-            document.getElementById("sientra").style.display = "block";        
-    }
-
-        function banners() {
-                var x = document.getElementsByClassName("resume-section");
-                    var i;
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = 'none';
-                    }
-            document.getElementById("banners").style.display = "block";        
-    }
-
-        function social() {
-                var x = document.getElementsByClassName("resume-section");
-                    var i;
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = 'none';
-                    }
-            document.getElementById("social").style.display = "block";   
-        }
-        function photography() {
-                var x = document.getElementsByClassName("resume-section");
-                    var i;
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = 'none';
-                    }
-            document.getElementById("photography").style.display = "block";
-        }
-
-        function dashboard() {
-                var x = document.getElementsByClassName("resume-section");
-                    var i;
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = 'none';
-                    }
-            document.getElementById("dashboard").style.display = "block";
-        }
-
-        function skills() {
-                var x = document.getElementsByClassName("resume-section");
-                    var i;
-                    for (i = 0; i < x.length; i++) {
-                        x[i].style.display = 'none';
-                    }
-            document.getElementById("skills").style.display = "block";
-        
-    }
-
-</script>
-
     </head>
-    <body onload="un()">
+    <body>
 
-
-        <!-- Navigation-->
-        <div id="navDiv">
-
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="sideNav">
-
-            <a class="navbar-brand">
-                <span class="d-block d-lg-none">Jamie Templeton</span>
-            </a>
-            
-             <a class="navbar-brand">
-                <span class="d-block d-none d-lg-block" style="position: absolute; top: 14px; left: 16px">Jamie Templeton</span>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav">
-
-                     <p>&nbsp;</p>
-                    <h5>Web Development</h5>
-                    <li class="nav-item"><a href="#" onclick="bff()" class="nav-link">Brooklyn Film Festival</a></li>
-                    <li class="nav-item"><a href="#" onclick="sientra()" class="nav-link">Sientra.com</a></li>
-                    <hr>
-                    <h5>Production</h5>
-                    <li class="nav-item"><a href="#" onclick="un()" class="nav-link active">UN Women 'UN Seen Story'</a></li>
-                    <li class="nav-item"><a href="#" onclick="banners()" class="nav-link">OLA Banners</a></li>
-                    <li class="nav-item"><a href="#" onclick="social()" class="nav-link">Social Posts</a></li>
-                    <hr>
-                    <h5>Personal Projects</h5>
-                    <li class="nav-item"><a href="#" onclick="photography()" class="nav-link">Photography</a></li>
-                    <li class="nav-item"><a href="#" onclick="dashboard()" class="nav-link">Dashboard</a></li>
-                    <hr>
-                    <li class="nav-item"><a href="#" onclick="skills()" class="nav-link">Skills</a></li>
-
-
-                </ul>
-            </div>
-        </nav>
-    </div>
         <!-- Page Content-->
-        <div class="container-fluid p-0">
+        <div class="container-fluid">
 
-<section class="resume-section un" id="un">
-                <div class="resume-section-content">
-
-<div class="overlay">
-<div class="row">   
-
-        <div class="col-md-6">
-                            <h3>UN Women ‘UNSeen Story’</h3>
-
-                            <h4>Sr Digital Producer</h4>   
-        </div>         
-        <div class="col-md-6">
-                    <img src="assets/unwomen.png" class="img-fluid img-thumbnail" alt="...">
-        </div>
-    </div>
-
-        <div class="row">
-            <div class="col-md-6">
-            <p>Effie Awards<br>
-            UN Women ‘UNSeen Story’
-        <ul>
-            <li>Silver in Small Budgets – Non-Profit</li>
-            <li>Bronze – Non-Proft</li>
-            <li>Bronze in Positive Change – Social Good, Non-Profit</li>
-        </ul>    
-            </p>
-        </div>
-        </div> 
+<div class="header">            
+<h2>
+Jamie Templeton | Portfolio
+</h2>
 </div>
-</div>
-</section>
 
-
-            <section class="resume-section bff" id="bff">
-                <div class="resume-section-content">
-
-            <div class="overlay">
-<div class="row">              
-<div class="col-md-6">
-
-                <h3>How to Talk About BFF</h3>
-
-                <p><a href="https://howtotalkaboutbff.com/" target="_blank"> https://howtotalkaboutbff.com/</a></p>
-
-                <h4>Sr Digital Producer</h4>
-                <h4>Front-end developer</h4>
-
-
-            </div>
-        
-<div class="col-md-6">
-
-            <video autoplay muted loop class="vid border border-4 rounded">
+<div class="container">
+        <div class="vidContainer">
+            <video autoplay muted loop class="vid">
               <source src="assets/vid/bff2.mp4" type="video/mp4">
             </video>
+        </div>
+
+  <div class="overlay">
+    <div class="text">
+            <p>
+            BROOKLYN FILM FESTIVAL <br> Something to Offend Everyone
+            <br>
+            <br>
+
+            Senior Digital Producer<br>
+            Front-end developer<br>
+            <span>{ html, CSS, Javascript, Vimeo API }</span> 
+        </p>
+
+        <p>    
+            The One Show Awards<br>
+            • 11 shortlists across Design, Direct, Interactive, Out of Home, and Print & Promotional
+        </p>  
+    </div>
+  </div>
 </div>
+
+<div class="container">
+  <img src="assets/unwomen.png" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">
+            <p>
+            UN WOMEN ‘UNSeen Story’<br>
+            Senior Digital Producer
+        </p>
+
+        <p> 
+            Effie Awards<br>
+            • Silver in Small Budgets – Non-Profit<br>
+            • Bronze in Positive Change – Social Good, Non-Profit
+        </p>  
+    </div>
+  </div>
 </div>
-            <div class="row">
-            <div class="col-md-6">
-                <p>HTML, CSS, Javascript, Vimeo API</p>
-                <p>The One Show Awards<br>
-                    Brooklyn Film Festival | Something to Offend Everyone
-                11 shortlists across Design, Direct, Interactive,
-                Out of Home, and Print & Promotional
-                </p>
-            </div>
-            </div>
 
-
-</div>
-</div>
-</section>
-
-
-
-<section class="resume-section sientra" id="sientra">
-                <div class="resume-section-content">
-
-            <div class="overlay">
-                <div class="row">   
-                    <div class="col-md-6">                    
-                    <h3>Sientra Brand Website</h3>
-
-                    <h4>Sr Digital Producer</h4>
-                    <h4>Front-end developer</h4>
-                </div>
-        
-<div class="col-md-6">
-            <video autoplay muted loop class="vid border border-4 rounded">
+<div class="container">
+        <div class="vidContainer">
+            <video autoplay muted loop class="vid">
               <source src="assets/vid/sientra.mp4" type="video/mp4">
             </video>
-</div>
-</div>
-
-             <div class="row">
-                <div class="col-md-6">
-                    <p>HTML, CSS, Javascript, Wordpress</p>
-                    </div>
-                </div>     
-</div>
-</div>
-</section>
-
-
-<!-- Banners -->
-<section class="resume-section banners" id="banners">
-                <div class="resume-section-content">
-
-              <div class="overlay">
-                <div class="row">   
-                    <div class="col-md-7">                    
-                    <h3>OLA Banners</h3>
-
-                    <h4>Sr Digital Producer</h4>
-       
-                    </div>
-        
-<div class="col-md-5">
-
-            <div id="carouselBanners" class="carousel slide" data-bs-ride="carousel" >
-                  <div class="carousel-inner">
-                    <div class="carousel-item " data-bs-interval="2000">
-                      <img src="assets/banners/lto.jpeg" class="d-block " alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                      <img src="assets/banners/knorr.png" class="d-block " alt="...">
-                    </div>
-                    <div class="carousel-item active" data-bs-interval="2000">
-                      <img src="assets/banners/sennheiser.png" class="d-block " alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                      <img src="assets/banners/unwomen.png" class="d-block " alt="...">
-                    </div>
-                  </div>
-            </div>
-
-</div>
-</div>
-
-               <div class="row">
-                    <div class="col-md-6">
-                    <p>Clients<br>Google, E*Trade, Banner Health, Knorr, Sennheiser, Merz, Banana Boat, Skintimate, Sientra, Xeomin, William Hill ...</p>
-                    </div>
-                </div>  
-
-</div>
-</div>
-</section>
-
-
-
-<!-- Social -->
-<section class="resume-section social" id="social">
-                <div class="resume-section-content">
-
-            <div class="overlay">
-                <div class="row">   
-                    <div class="col-md-7">                    
-                    <h3>Social Posts</h3>
-
-                    <h4>Sr Digital Producer</h4>
-                    </div>
-        
-<div class="col-md-5">
-
-            <div id="carouselSocial" class="carousel slide border border-1 bg-white " data-bs-ride="carousel" style="max-width:300px;">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="2000">
-                      <img src="assets/social/bff.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                      <img src="assets/social/bff2.jpg" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                      <img src="assets/social/unseen.jpg" class="d-block w-100" alt="...">
-                    </div>  
-                    <div class="carousel-item" data-bs-interval="3000">
-                      <img src="assets/social/1.gif" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                      <img src="assets/social/schick.png" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                      <img src="assets/social/bananaboat.png" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                      <img src="assets/social/hawaiiantropic.png" class="d-block w-100" alt="...">
-                    </div>
-                  </div>
-            </div>
-
-</div>
-</div>
-
-
-                <div class="row">
-                    <div class="col-md-6">
-                    <p>Clients<br>Google, E*Trade, Banner Health, Knorr, Hidden Valley, Hawaiian Tropic, Banana Boat ...</p>
-                    </div>
-                </div>
-
         </div>
-        </div>
-</section>
-
-
-
-<!-- Photography -->
-<section class="resume-section photography" id="photography">
-    <div class="resume-section-content">
-            <div class="overlay">
-            <div class="row">   
-                <div class="col-md-6">                    
-                    <h3>Photography</h3>
-                    <p>&nbsp;</p>
-                    <p>Street photography | sleeping commuters<br><br>
-                    7,000 photos taken during 4 years of commuting in and out of New York</p>
-                </div>
-        
-    <div class="col-md-6">
-
-            <div id="carouselPhotography" class="carousel slide border border-4 rounded" data-bs-ride="carousel">
-                  <div class="carousel-inner">
-                    
-                                                        <div class="carousel-item active">
-                                      <img src="assets/photography/projectOne/sleep.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-2.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                     <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-3.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-4.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-5.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-6.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-7.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-8.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-9.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-10.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-11.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-12.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-13.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-14.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-15.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-16.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-17.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-18.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-19.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-20.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-21.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-22.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-23.jpg" class="d-block img-fluid" alt="...">
-                                    </div>
-                                    <div class="carousel-item">
-                                      <img src="assets/photography/projectOne/sleep-24.jpg" class="d-block img-fluid" alt="...">
-                                    </div>   
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselPhotography" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselPhotography" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-            </div>
-
-            </div>
+  <div class="overlay">
+    <div class="text">
+            <p>
+            SIENTRA BRAND WEBSITE<br>
+            <br>
+            <br>
+            Senior Digital Producer<br>
+            Front-end developer<br>  
+            <span>{ HTML, CSS, Javascript, Wordpress }</span>
+        </p>  
+    </div>
+  </div>
 </div>
-        <div class="row">
-            <div class="col-md-6">
-                <p>Exhibits and publications<br>
+
+<div class="subHead">Personal Projects</div>
+
+<div class="container">
+  <img src="assets/dashboard.png" alt="" class="image">
+  <div class="overlay">
+    <div class="text">
+        <p>
+            DASHBOARD
+        </p>
+
+        <p>Raspberry Pi, Apache, PHP, Javascript, CSS, HTML</p>
+        <p>API's: Google Nest, NY Times, Open Weather Map, Google Calendar</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <img src="assets/photography/projectOne/sleep-6.jpg" alt="" class="image">
+
+  <div class="overlay">
+    <div class="text">
+                <p>PHOTOGRAPHY</p>
+                <p>Exhibits and publications:<br>
                     f-stop magazine, Griffen Museum of Photography, Center for Fine Art Photography, LA Photo Curator, Blur Magazine, Holl and Lane Magazine 
                 </p>
-             </div>
-        </div> 
-        </div>
-    </div>
-</section>
-
-
-<!-- Dashboard -->
-<section class="resume-section dashboard" id="dashboard">
-                <div class="resume-section-content">
-
-                            <div class="overlay">
-<div class="row">   
-                    <div class="col-md-6">                    
-                    <h3>Dashboard</h3>
-        
-
-                    </div>
-        
-        <div class="col-md-6">
-                      <img src="assets/dashboard.png" class="img-fluid img-thumbnail"  alt="...">
-        </div>
-    </div>
-
-            <div class="row">
-            <div class="col-md-6">
-                <p>Raspberry Pi, Apache, PHP, Javascript, CSS, HTML</p>
-                <p>API's: Google Nest, NY Times, Open Weather Map, Google Calendar</p>
-            </div>
-        </div>
 
     </div>
+  </div>
 </div>
-</section>
 
 
 
 
-            
-            <!-- Skills-->
-            <section class="resume-section skills" id="skills">
-                <div class="resume-section-content">
-                    <div class="overlay">
-                    <h3 class="mb-5">Skills</h3>
-                    <div class="subheading mb-3">Digital Producer: digital skill set</div>
-                    <ul class="list-inline dev-icons">
-                        <li class="list-inline-item"><i class="fab fa-html5"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-github"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-php"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-npm"></i></li>
-                    </ul>
-                    <div class="subheading mb-3">Workflow</div>
-                    <ul class="fa-ul mb-0">
+<div class="subHead">More</div>
+
+<div class="container">
+  <img src="assets/photography/projectOne/sleep-9.jpg" alt="" class="image">
+
+  <div class="overlay">
+    <div class="text">
+
+                    <p>SKILLS</p>
+                        <i class="fab fa-html5"></i>
+                        <i class="fab fa-css3-alt"></i>
+                        <i class="fab fa-js-square"></i>
+                        <i class="fab fa-github"></i>
+                        <i class="fab fa-node-js"></i>
+                        <i class="fab fa-wordpress"></i>
+                        <i class="fab fa-php"></i>
+                        <i class="fab fa-npm"></i>
+                <div>   
+                    <p>WORKFLOW</p>
+
+                    <ul class="fa-ul">
                         <li>
                             <span class="fa-li"><i class="fas fa-check"></i></span>
                             Mobile-First, Responsive Design
@@ -557,31 +249,32 @@ font-family: 'Open Sans', sans-serif;
                             Cross Functional Teams
                         </li>
                     </ul>
-                </div>
-            </div>
-            </section>
+                </div>    
 
-           
-           
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+  </div>
+</div>
 
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+<div class="container">
+    <img src="assets/photography/projectOne/sleep-8.jpg" alt="" class="image">
+  <div class="overlay">
+    <div class="text">
 
-<script>
-// Add active class to the current button (highlight it)
-var header = document.getElementById("navDiv");
-var btns = header.getElementsByClassName("nav-link");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-  var current = document.getElementsByClassName("active");
-  current[0].className = current[0].className.replace(" active", "");
-  this.className += " active";
-  });
-}
-</script>
+                    <p>CONTACT</p>
+                        templejs @ gmail.com<br>
+                        +1 (203) 912-5562<br>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="footer"></div>    
+
+
+
 
     </body>
 </html>
