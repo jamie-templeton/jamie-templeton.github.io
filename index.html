@@ -18,13 +18,27 @@
     document.addEventListener("click", x=>0)
 </script>
 <style>
+
+a:link {
+  color: #1b2a39;
+}
+a:visited {
+  color: #1b2a39;
+}
+a:hover {
+  color: #1b2a39;
+}
+a:active {
+  color: #1b2a39;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #fbfbf8;}
 h1, h2 {
     font-family: inherit;
     font-weight: 200;
-    color: #FFFFFF;
+    color: #fbfbf8;
     margin-left:1.0em;
 }
 .container {
@@ -36,9 +50,9 @@ h1, h2 {
 .header {
     max-width:800px;
     height:5em;
-    margin: 0 auto -5px auto;
-    color: #FFFFFF;
-    background-color: #333;
+    margin: 0 auto 0 auto;
+    color: #fbfbf8;
+    background-color: #1b2a39;
     padding: 5px 0 5px 0;
 }
 
@@ -61,17 +75,17 @@ h1, h2 {
   max-width:800px;
   opacity: 0;
   transition: .5s ease;
-  background-color: #000;
+  background-color: #1b2a39;
   margin: 0 auto;
 }
 
 .container:hover .overlay {
-    opacity: .8;
+    opacity: .9;
 }
 
 .text {
   color: white;
-  font-size: 1.0;
+  font-size: 1.4em;
   position: absolute;
   top: 50%;
   left: 45%;
@@ -108,9 +122,14 @@ ul {font-size:1.2em;}
     height:20em;
     margin: 0 auto -5px auto;
     font-size: ;
-    color: #FFFFFF;
+    color: #fbfbf8;
     background-color: #fbfbf8;
     padding: 5px 0 5px 0;
+}
+
+.contact {
+    margin-right:3%;
+    color: #1b2a39;
 }
 
 @media (max-width: 600px) {
@@ -155,7 +174,7 @@ Jamie Templeton | Portfolio
 <div class="container">
         <div class="vidContainer">
             <video autoplay muted loop class="vid">
-              <source src="assets/vid/bff2.mp4" type="video/mp4">
+              <source src="assets/vid/bff-lesson-1.mp4" type="video/mp4">
             </video>
         </div>
 
@@ -240,7 +259,7 @@ Jamie Templeton | Portfolio
   <div class="overlay">
     <div class="text">
         <p>
-            DASHBOARD
+            HOME DASHBOARD
         </p>
 
         <p>Raspberry Pi, Apache, PHP, Javascript, CSS, HTML</p>
@@ -311,10 +330,11 @@ Jamie Templeton | Portfolio
   <div class="">
 
                     <p>CONTACT</p>
-                        templejs @ gmail.com<br>
-                        +1 (203) 912-5562<br>
-                        <a href="https://www.linkedin.com/in/jamietempleton/"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/jamie.s.templeton/"><i class="fa-brands fa-instagram"></i></a>
+                        <span class="contact">templejs @ gmail.com</span>
+                        <span class="contact">+1 (203) 912-5562</span>
+                        <span class="contact"><a href="https://www.linkedin.com/in/jamietempleton/"><i class="fa-brands fa-linkedin"></i></a></span>
+                        <span class="contact">
+                        <a href="https://www.instagram.com/jamie.s.templeton/"><i class="fa-brands fa-instagram"></i></a></span>
 
 
   </div>
