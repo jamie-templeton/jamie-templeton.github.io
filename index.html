@@ -1077,7 +1077,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
     e.preventDefault();</p>
 <p>    const form = new FormData(this);
     const data = Object.fromEntries(form.entries());</p>
-<p>    const response = await fetch("https://script.google.com/macros/s/AKfycbxFfrt2pZQtdCDvI5LdihOXpOXA4PL2ptsLbkLKjsi6MDkZtuNY9idmy5D6djNhBQtwWA/exec", {
+<p>    const response = await fetch("https://script.google.com/macros/s/AKfycbwuZstJ610IzvSdJoxclzHcQ-CIGAtShutKMeVBNFxAOS9hrn4JzKiqVs96ACKkjmEAHw/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
