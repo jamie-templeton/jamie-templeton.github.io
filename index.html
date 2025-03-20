@@ -6,29 +6,55 @@
 </head>
 
 <body>
+<p>
 
-	<div class="entry-content">
-		<form id="contact-form">
-    <input type="text" name="name" placeholder="Your Name" required><br />
-    <input type="email" name="email" placeholder="Your Email" required><br />
-    <textarea name="message" placeholder="Your Message" required></textarea><br />
-    <button type="submit">Send</button><br />
-</form>
-<p id="response">
-<script>
-document.getElementById("contact-form").addEventListener("submit", async function(e) {
-    e.preventDefault();
-    const form = new FormData(this);
-    const data = Object.fromEntries(form.entries());
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyS0D2lSPhwBvK13hnwzatiMjOBW1_A-mAMPH9uIP-Jvr7i_d_gJ_Yj0HNKETBT1P9vDg/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form with JSONP</title>
+</head>
+<body>
+  <form id="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+  <p id="response"></p>
+
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Gather form data from the inputs
+      var formData = new FormData(this);
+      var params = new URLSearchParams(formData);
+      
+      // Define your callback function name
+      var callbackName = "handleResponse";
+      params.append("callback", callbackName);
+
+      // Create a script tag to handle the JSONP request
+      var script = document.createElement("script");
+      // Replace YOUR_WEB_APP_URL_HERE with your actual URL
+      script.src = "https://script.google.com/macros/s/AKfycbwqcaxOwt4glZ3C_zp-ZX-KJRyNtkGrPre_VRkd9PUZil1bRtSqof6UBkxvHlsAwqjk8w/exec" + params.toString();
+      
+      // Append the script to the document to make the request
+      document.body.appendChild(script);
+
+      // Define the callback function to handle the response
+      window[callbackName] = function(response) {
+        document.getElementById("response").innerText = response.status === "success" ? "Message sent!" : "Error!";
+        // Clean up: remove the script tag and callback function
+        document.body.removeChild(script);
+        delete window[callbackName];
+      };
     });
- const result = await response.json();
-    document.getElementById("response").innerText = result.status === "success" ? "Message sent!" : "Error!";
-});
-</script>
+  </script>
+</body>
+</html>
+
 
 </p>
 </body>
