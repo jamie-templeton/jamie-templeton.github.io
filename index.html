@@ -1072,20 +1072,22 @@ font-weight: 700;
     <button type="submit">Send</button><br />
 </form>
 <p id="response">
-<p><script>
+<script>
 document.getElementById("contact-form").addEventListener("submit", async function(e) {
-    e.preventDefault();</p>
-<p>    const form = new FormData(this);
-    const data = Object.fromEntries(form.entries());</p>
-<p>    const response = await fetch("https://script.google.com/macros/s/AKfycbwuZstJ610IzvSdJoxclzHcQ-CIGAtShutKMeVBNFxAOS9hrn4JzKiqVs96ACKkjmEAHw/exec", {
+    e.preventDefault();
+    const form = new FormData(this);
+    const data = Object.fromEntries(form.entries());
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwuZstJ610IzvSdJoxclzHcQ-CIGAtShutKMeVBNFxAOS9hrn4JzKiqVs96ACKkjmEAHw/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
-    });</p>
-<p>    const result = await response.json();
+    });
+ const result = await response.json();
     document.getElementById("response").innerText = result.status === "success" ? "Message sent!" : "Error!";
 });
-</script></p>
+</script>
+
+</p>
 	</div><!-- .entry-content -->
 
 	</article><!-- #post-459 -->
