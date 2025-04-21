@@ -1,1 +1,282 @@
-oops
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jamie Templeton – Photographs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- GLightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&display=swap');
+
+    body {
+      margin: 0;
+      font-family: "Atkinson Hyperlegible Mono", courier, sans-serif;
+      font-size: 18px;
+      overflow-x: hidden;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -400px;
+      width: 350px;
+      height: 100%;
+      text-align: right;
+      background-color: #333;
+      color: white;
+      padding: 60px 40px 20px 20px;
+      transition: left 0.3s ease;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 15px 0;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 998;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .main-content {
+      padding-top: 75px;
+    }
+
+    .content-section {
+      display: none;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      padding: 10px 15px;
+      background-color: #555;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 28px;
+      transition: background-color 0.2s;
+    }
+
+    .toggle-btn:hover {
+      background-color: #444;
+    }
+
+    .icon {
+      display: inline-block;
+      transition: transform 0.4s ease;
+    }
+
+    .rotate {
+      transform: rotate(720deg);
+    }
+
+    .home {
+      margin: auto;
+      width: 50%;
+      text-align: justify;
+    }
+
+    .home img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      border: 2px solid black;
+    }
+
+    .preamble {
+      padding: 10px 0px 40px 0px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+      margin: auto;
+      width: 70%;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .nombre {
+      position: absolute;
+      width: 350px;
+      bottom: 150px;
+      border-top: 1px solid #ddd;
+    }
+
+    .contact {
+      margin-top: 20px;
+      margin: auto;
+      width: 70%;
+    }
+
+    @media (max-width: 600px) {
+      .sidebar {
+        width: 300px;
+      }
+      .nombre {
+        width: 300px;
+      }
+      .home {
+        width: 100%;
+      }
+      .main-content {
+        padding-top: 0px;
+      }
+      .preamble {
+        padding: 20px;
+      }
+      .contact {
+        margin-top: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar" id="sidebar">
+    <a onclick="showContent('section1')">Home</a>
+    <a onclick="showContent('section2')">Gallery</a>
+    <a onclick="showContent('section3')">Contact</a>
+
+    <div class="nombre">
+      Jamie Templeton
+      <br>Redding, CT, USA
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <button class="toggle-btn" onclick="toggleSidebar()">
+    <span id="toggleIcon" class="icon">☰</span>
+  </button>
+
+  <div class="main-content">
+    <div id="section1" class="content-section home active">
+      <img src="img/flickr.jpg" alt="Main Image">
+      <div class="preamble">
+      <p> 
+        Between 2015 and 2019, Jamie Templeton made over 7,000 photographs of sleeping train passengers during his daily commute from Connecticut to New York City. Armed with a small, mirrorless camera and a quiet sense of observation, Templeton began the project with a simple piece of advice: “Shoot what you can’t escape.” At the time, he wasn’t a photographer—just one more commuter among thousands, witnessing the same bleary-eyed faces day after day. But what began as a personal experiment quickly evolved into a quiet meditation on exhaustion, routine, and the strange intimacy of shared spaces. Each image captures a private world behind closed eyes—a collective portrait of a city in transit, asleep on its feet.
+      </p>
+      <p>
+        From the full archive, 100 images have been selected for this collection—offering a curated glimpse into a larger body of work that spans years and thousands of miles. All photographs from the series are available for licensing for commercial use, publication, or exhibition.
+      </p>
+      </div>
+    </div>
+
+    <div id="section2" class="content-section">
+      <div class="gallery" id="gallery"></div>
+    </div>
+
+    <div id="section3" class="content-section">
+      <div class="contact">
+        <h1>Contact</h1>
+        <iframe data-tally-src="https://tally.so/embed/wbAP70?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="372" frameborder="0" marginheight="0" marginwidth="0" title="Contact form"></iframe>
+        <script>
+          var d=document,w="https://tally.so/widgets/embed.js",v=function(){
+            "undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}));
+          };
+          if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){
+            var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);
+          }
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLightbox JS -->
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      const icon = document.getElementById('toggleIcon');
+
+      const isOpen = sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+      icon.classList.toggle('rotate');
+      icon.textContent = isOpen ? '✖' : '☰';
+    }
+
+    function showContent(sectionId) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+      toggleSidebar();
+    }
+
+    function loadGallery() {
+      const gallery = document.getElementById('gallery');
+      const imageCount = 100;
+      const folderPath = 'gallery';
+
+      for (let i = 1; i <= imageCount; i++) {
+        const link = document.createElement('a');
+        link.href = `${folderPath}/select-${i}.jpg`;
+        link.className = 'glightbox';
+        link.setAttribute('data-gallery', 'gallery');
+        link.setAttribute('data-title', `Image ${i}`);
+
+        const img = document.createElement('img');
+        img.src = `${folderPath}/select-${i}.jpg`;
+        img.alt = `Image ${i}`;
+        img.loading = 'lazy';
+
+        link.appendChild(img);
+        gallery.appendChild(link);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadGallery();
+      GLightbox({ selector: '.glightbox' });
+    });
+  </script>
+
+</body>
+</html>
