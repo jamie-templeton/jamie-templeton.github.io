@@ -135,10 +135,11 @@
       object-fit: cover;
       transition: transform 0.2s ease;
       cursor: pointer;
+      border: 1px solid black;
     }
 
     .gallery img:hover {
-      transform: scale(1.05);
+      /* transform: scale(1.05); */
     }
 
     .nombre {
@@ -180,7 +181,7 @@
 
   <div class="sidebar" id="sidebar">
     <a onclick="showContent('section1')">Home</a>
-    <a onclick="showContent('section2')">Gallery</a>
+    <a onclick="showContent('section2')">Photography</a>
     <a onclick="showContent('section3')">Contact</a>
 
     <div class="nombre">
@@ -262,7 +263,7 @@
         link.setAttribute('data-gallery', 'gallery');
         // link.setAttribute('data-title', `Image ${i}`);
         link.setAttribute('data-title', `&copy; 2025 Jamie Templeton`);
-
+        
         const img = document.createElement('img');
         img.src = `${folderPath}/select-${i}.jpg`;
         img.alt = `Image ${i}`;
