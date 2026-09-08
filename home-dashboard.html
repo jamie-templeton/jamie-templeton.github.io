@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .header { text-align: center; margin-bottom: 2.5rem; }
+    .header h1 { font-size: 2.5rem; font-weight: 700; color: #f8fafc; }
+    .header p { color: #94a3b8; margin-top: 0.5rem; font-size: 1rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      width: 100%;
+      max-width: 800px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .card h2 { font-size: 1rem; font-weight: 600; color: #cbd5e1; margin-bottom: 0.25rem; }
+    .card .value { font-size: 1.75rem; font-weight: 700; color: #f1f5f9; }
+    .card .sub { font-size: 0.8rem; color: #64748b; margin-top: 0.2rem; }
+    .footer { margin-top: 2.5rem; color: #475569; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🏠 Home Dashboard</h1>
+    <p>Welcome to your personal home dashboard</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🌡️</div>
+      <h2>Temperature</h2>
+      <div class="value">72°F</div>
+      <div class="sub">Inside · Comfortable</div>
+    </div>
+    <div class="card">
+      <div class="icon">💡</div>
+      <h2>Lights</h2>
+      <div class="value">4 On</div>
+      <div class="sub">2 rooms active</div>
+    </div>
+    <div class="card">
+      <div class="icon">🔒</div>
+      <h2>Security</h2>
+      <div class="value">Armed</div>
+      <div class="sub">All doors locked</div>
+    </div>
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h2>Energy</h2>
+      <div class="value">3.2 kW</div>
+      <div class="sub">Current usage</div>
+    </div>
+    <div class="card">
+      <div class="icon">📶</div>
+      <h2>Network</h2>
+      <div class="value">Online</div>
+      <div class="sub">8 devices connected</div>
+    </div>
+    <div class="card">
+      <div class="icon">🌤️</div>
+      <h2>Weather</h2>
+      <div class="value">68°F</div>
+      <div class="sub">Partly cloudy</div>
+    </div>
+  </div>
+
+  <div class="footer">This page is for your Home Dashboard — all your home at a glance.</div>
+</body>
+</html>
