@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Jamie Templeton">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hanging Height Calculator</title>
+<style>
+:root{
+  --wall:#E3E6E9; --panel:#F4F5F6; --ink:#1B2430; --muted:#5A6572; --line:#B9C0C8;
+  --center:#0F766E; --hw:#B1275F; --frame:#FFFFFF; --art:#CBD3DC;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --wall:#161B21; --panel:#1F262E; --ink:#E8ECF0; --muted:#9BA6B2; --line:#3A4552;
+    --center:#4FD1C5; --hw:#FF7AA8; --frame:#2A333D; --art:#3B4756;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --wall:#161B21; --panel:#1F262E; --ink:#E8ECF0; --muted:#9BA6B2; --line:#3A4552;
+  --center:#4FD1C5; --hw:#FF7AA8; --frame:#2A333D; --art:#3B4756;
+  color-scheme: dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0; background:var(--wall); color:var(--ink);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  font-variant-numeric:tabular-nums; line-height:1.45;
+}
+main{max-width:980px; margin:0 auto; padding:28px 20px 48px}
+h1{font-size:1.6rem; font-weight:700; letter-spacing:-.01em; margin:0 0 4px}
+.lede{color:var(--muted); margin:0 0 24px; max-width:60ch}
+.grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:20px}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:20px}
+.field{margin-bottom:22px}
+.field:last-child{margin-bottom:0}
+label,.lbl{display:block; font-weight:600; margin-bottom:4px}
+.hint{color:var(--muted); font-size:.875rem; margin:0 0 8px}
+.row{display:flex; gap:10px; align-items:center}
+input[type=number],select{
+  font:inherit; color:var(--ink); background:var(--wall);
+  border:1px solid var(--line); border-radius:4px; padding:10px 12px; min-height:44px;
+}
+input[type=number]{width:7.5rem}
+select{min-width:6.5rem}
+input:focus-visible,select:focus-visible{outline:3px solid var(--center); outline-offset:1px}
+.unit{color:var(--muted)}
+input[type=range]{width:100%; accent-color:var(--center); min-height:44px; margin:0}
+.scale{display:flex; justify-content:space-between; color:var(--muted); font-size:.8125rem}
+.readout{font-size:1.25rem; font-weight:700}
+.result{margin-top:20px; padding-top:18px; border-top:1px solid var(--line)}
+.result .big{font-size:2.6rem; font-weight:700; line-height:1.1; letter-spacing:-.02em; color:var(--hw)}
+.result .dec{color:var(--muted); margin-top:2px}
+.result dl{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; margin:16px 0 0}
+.result dt{color:var(--muted)}
+.result dd{margin:0; text-align:right; font-weight:600}
+.msg{color:var(--muted)}
+.err{color:var(--hw); font-weight:600}
+svg{width:100%; height:auto; display:block}
+.svgwrap{display:flex; flex-direction:column}
+.legend{display:flex; gap:16px; flex-wrap:wrap; font-size:.875rem; color:var(--muted); margin-top:10px}
+.legend span::before{content:""; display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; vertical-align:-1px}
+.legend .c::before{background:var(--center)}
+.legend .h::before{background:var(--hw)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Hanging height calculator</h1>
+  <p class="lede">Set the center height for the artwork, then enter the painting height and the D-ring drop. The result is where the hardware goes on the wall, measured from the floor.</p>
+
+  <div class="grid">
+    <section class="panel" aria-label="Measurements">
+      <div class="field">
+        <label for="center">Center height</label>
+        <p class="hint">Floor to the middle of the painting.</p>
+        <div class="readout" id="centerOut" aria-live="polite"></div>
+        <input type="range" id="center" min="56" max="62" step="0.125" value="58">
+        <div class="scale"><span>56"</span><span>62"</span></div>
+      </div>
+
+      <div class="field">
+        <span class="lbl" id="hLbl">Painting height</span>
+        <p class="hint">Overall height including the frame.</p>
+        <div class="row" role="group" aria-labelledby="hLbl">
+          <input type="number" id="hWhole" min="0" max="200" step="1" inputmode="numeric" placeholder="0" aria-label="Painting height, whole inches">
+          <select id="hFrac" aria-label="Painting height, fraction of an inch"></select>
+          <span class="unit">in</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl" id="dLbl">Top of frame to D-ring</span>
+        <p class="hint">Measure from the top edge of the frame down to the hanging point on the hardware.</p>
+        <div class="row" role="group" aria-labelledby="dLbl">
+          <input type="number" id="dWhole" min="0" max="200" step="1" inputmode="numeric" placeholder="0" aria-label="Drop to D-ring, whole inches">
+          <select id="dFrac" aria-label="Drop to D-ring, fraction of an inch"></select>
+          <span class="unit">in</span>
+        </div>
+      </div>
+
+      <div class="result" aria-live="polite">
+        <div id="resultBody"></div>
+      </div>
+    </section>
+
+    <section class="panel svgwrap" aria-label="Wall diagram">
+      <svg id="diagram" viewBox="0 0 340 420" role="img" aria-label="Diagram of the painting on the wall"></svg>
+      <div class="legend"><span class="c">Center line</span><span class="h">Hardware on wall</span></div>
+    </section>
+  </div>
+</main>
+
+<script>
+(function(){
+  var FR = ["", "1/8", "1/4", "3/8", "1/2", "5/8", "3/4", "7/8"];
+  ["hFrac","dFrac"].forEach(function(id){
+    var s = document.getElementById(id);
+    FR.forEach(function(t,i){
+      var o = document.createElement("option");
+      o.value = i/8; o.textContent = t === "" ? "0" : t;
+      s.appendChild(o);
+    });
+  });
+
+  var $ = function(id){ return document.getElementById(id); };
+
+  // Format a value in inches as whole + reduced fraction, rounded to the nearest 1/16.
+  function fmt(v){
+    var n = Math.round(v*16);
+    var neg = n < 0; n = Math.abs(n);
+    var whole = Math.floor(n/16), rem = n % 16, den = 16;
+    while(rem && rem % 2 === 0){ rem /= 2; den /= 2; }
+    var s = "";
+    if(whole || !rem) s += whole;
+    if(rem) s += (whole ? " " : "") + rem + "/" + den;
+    return (neg ? "-" : "") + s + '"';
+  }
+  function dec(v){ return v.toFixed(4).replace(/0+$/,"").replace(/\.$/,"") + " in"; }
+  function num(id){ var x = parseFloat($(id).value); return isNaN(x) ? 0 : x; }
+
+  function draw(C, H, D, hw, ok){
+    var svg = $("diagram");
+    var W = 340, Ht = 420, floorY = 396, top = 14;
+    var extent = Math.max(C + H/2, 66) + 4;
+    var k = (floorY - top) / extent;
+    var y = function(inch){ return floorY - inch*k; };
+    var out = "";
+    out += '<line x1="12" y1="'+floorY+'" x2="'+(W-12)+'" y2="'+floorY+'" stroke="var(--ink)" stroke-width="2"/>';
+    out += '<text x="14" y="'+(floorY+16)+'" font-size="11" fill="var(--muted)">Floor</text>';
+    // center line
+    out += '<line x1="12" y1="'+y(C)+'" x2="'+(W-12)+'" y2="'+y(C)+'" stroke="var(--center)" stroke-width="1.5" stroke-dasharray="6 4"/>';
+    out += '<text x="'+(W-14)+'" y="'+(y(C)-6)+'" font-size="12" text-anchor="end" fill="var(--center)" font-weight="600">Center '+fmt(C)+'</text>';
+    if(H > 0){
+      var pw = Math.min(150, Math.max(70, H*k*0.8));
+      var x0 = 110 - pw/2 + 20;
+      var yt = y(C + H/2), ph = H*k;
+      out += '<rect x="'+x0+'" y="'+yt+'" width="'+pw+'" height="'+ph+'" fill="var(--frame)" stroke="var(--ink)" stroke-width="2"/>';
+      var m = Math.min(8, pw*0.1, ph*0.1);
+      out += '<rect x="'+(x0+m)+'" y="'+(yt+m)+'" width="'+(pw-2*m)+'" height="'+(ph-2*m)+'" fill="var(--art)"/>';
+      if(ok){
+        var hy = y(hw);
+        out += '<line x1="'+(x0-10)+'" y1="'+hy+'" x2="'+(x0+pw+10)+'" y2="'+hy+'" stroke="var(--hw)" stroke-width="1.5"/>';
+        out += '<circle cx="'+(x0+pw/2)+'" cy="'+hy+'" r="6" fill="var(--hw)"/>';
+        out += '<text x="'+(x0+pw+16)+'" y="'+(hy+4)+'" font-size="12" fill="var(--hw)" font-weight="600">'+fmt(hw)+'</text>';
+      }
+    }
+    svg.innerHTML = out;
+  }
+
+  function update(){
+    var C = num("center");
+    $("centerOut").textContent = fmt(C);
+    var H = num("hWhole") + parseFloat($("hFrac").value);
+    var D = num("dWhole") + parseFloat($("dFrac").value);
+    var body = $("resultBody");
+
+    if(H <= 0){
+      body.innerHTML = '<p class="msg">Enter the painting height to see where the hardware goes.</p>';
+      draw(C, 0, 0, 0, false); return;
+    }
+    if(D > H){
+      body.innerHTML = '<p class="err">The D-ring drop can\u2019t be taller than the painting. Check both measurements.</p>';
+      draw(C, H, D, 0, false); return;
+    }
+    var topFrame = C + H/2;
+    var bottomFrame = C - H/2;
+    var hw = topFrame - D;
+    body.innerHTML =
+      '<div class="lbl" style="margin-bottom:2px">Place hardware on the wall at</div>' +
+      '<div class="big">' + fmt(hw) + '</div>' +
+      '<div class="dec">' + dec(hw) + ' from the floor</div>' +
+      '<dl>' +
+        '<dt>Top of frame</dt><dd>' + fmt(topFrame) + '</dd>' +
+        '<dt>Bottom of frame</dt><dd>' + fmt(bottomFrame) + '</dd>' +
+      '</dl>';
+    draw(C, H, D, hw, true);
+  }
+
+  ["center","hWhole","hFrac","dWhole","dFrac"].forEach(function(id){
+    $(id).addEventListener("input", update);
+    $(id).addEventListener("change", update);
+  });
+  update();
+})();
+</script>
+</body>
+</html>
