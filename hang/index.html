@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="author" content="Jamie Templeton">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="author" content="Jamie Templeton">
 <title>Hanging Height Calculator</title>
 <style>
 :root{
@@ -74,7 +74,7 @@ svg{width:100%; height:auto; display:block}
 <body>
 <main>
   <h1>Hanging height calculator</h1>
-  <p class="lede">Set the center height for the artwork, then enter the painting height and the D-ring drop. The result is where the hardware goes on the wall, measured from the floor.</p>
+  <p class="lede">Set the center height for the artwork, then enter the painting height and the drop to the hanging point (D-ring or top of French cleat). The result is where the hardware goes on the wall, measured from the floor.</p>
 
   <div class="grid">
     <section class="panel" aria-label="Measurements">
@@ -97,11 +97,11 @@ svg{width:100%; height:auto; display:block}
       </div>
 
       <div class="field">
-        <span class="lbl" id="dLbl">Top of frame to D-ring</span>
-        <p class="hint">Measure from the top edge of the frame down to the hanging point on the hardware.</p>
+        <span class="lbl" id="dLbl">Top of frame to hanging point</span>
+        <p class="hint">D-ring: measure down to the hanging point on the hardware. French cleat: mate the two halves, then measure down to the top edge of the wall-side cleat.</p>
         <div class="row" role="group" aria-labelledby="dLbl">
-          <input type="number" id="dWhole" min="0" max="200" step="1" inputmode="numeric" placeholder="0" aria-label="Drop to D-ring, whole inches">
-          <select id="dFrac" aria-label="Drop to D-ring, fraction of an inch"></select>
+          <input type="number" id="dWhole" min="0" max="200" step="1" inputmode="numeric" placeholder="0" aria-label="Drop to hanging point, whole inches">
+          <select id="dFrac" aria-label="Drop to hanging point, fraction of an inch"></select>
           <span class="unit">in</span>
         </div>
       </div>
@@ -187,7 +187,7 @@ svg{width:100%; height:auto; display:block}
       draw(C, 0, 0, 0, false); return;
     }
     if(D > H){
-      body.innerHTML = '<p class="err">The D-ring drop can\u2019t be taller than the painting. Check both measurements.</p>';
+      body.innerHTML = '<p class="err">The drop to the hanging point can\u2019t be taller than the painting. Check both measurements.</p>';
       draw(C, H, D, 0, false); return;
     }
     var topFrame = C + H/2;
